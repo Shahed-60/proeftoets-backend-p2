@@ -14,8 +14,8 @@
     <h1>De Vijf rijskte mensen ter wereld</h1>
     <form action="create.php" method="post">
 
-        <label for="name">Naam</label><br>
-        <input type="text" name="name" id="name"><br>
+        <label for="naam">Naam</label><br>
+        <input type="text" name="naam" id="naam"><br>
         <br>
         <label for="vermogen">Vermogen</label><br>
         <input type="text" name="vermogen" id="vermogen"><br>

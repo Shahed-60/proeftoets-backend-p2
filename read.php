@@ -6,7 +6,7 @@ $dsn = "mysql:host=$dbHost;dbname=$dbName;charset=UTF8";
 try {
     $pdo = new PDO($dsn, $dbUser, $dbPass);
     if ($pdo) {
-        // echo "De verbiending is gelukt";
+        echo "De verbiending is gelukt";
     } else {
         echo "Interne server-error";
     }
@@ -14,7 +14,7 @@ try {
     echo $e->getMessage();
 }
 // Maak een select query die alle records uit de tabel persoon haalt
-$sql = "SELECT * FROM Persoon";
+$sql = "SELECT * FROM RichestPeople";
 // maak via de sql-query gereed om te worden uitgevoerd op de database
 $statement = $pdo->prepare($sql);
 // voer de sql-query uit op de database
@@ -26,13 +26,12 @@ $result = $statement->fetchAll(PDO::FETCH_OBJ);
 $rows = "";
 foreach ($result as $info) {
     $rows .= "<tr>
-                <td>$info->Id</td>
-                <td>$info->Voornaam</td> 
-                <td>$info->Tussenvoegsel</td>
-                <td>$info->Achternaam</td>
-                <td>$info->Haarkleur</td>
-                <td>$info->Oogkleur</td>
-                <td>$info->Huidkleur</td>
+                // <td>$info->Id</td>
+                <td>$info->Naam</td> 
+                <td>$info->Vermogen</td>
+                <td>$info->Leeftijd</td>
+                <td>$info->Bedrijf</td>
+    
             //     <td>
             //         <a href='delete.php?Id=$info->Id'>
             //             <img src='img/b_drop.png' alt='kruis'>
@@ -57,7 +56,7 @@ foreach ($result as $info) {
 </head>
 
 <body>
-    <h3>Persoonsgegevens</h3>
+    <h3>De Vijf rijskte mensen ter wereld</h3>
     <a href="index.php">
         <input type="button" value="Nieuw record">
     </a>
@@ -70,8 +69,7 @@ foreach ($result as $info) {
             <th>Vermogen</th>
             <th>Leeftijd</th>
             <th>Bedrijf</th>
-            <th></th>
-            <th></th>
+            <!-- <th></th> -->
         </thead>
         <tbody>
             <?= $rows; ?>
